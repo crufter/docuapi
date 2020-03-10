@@ -1,8 +1,11 @@
 theme = "docuapi"
 themesdir = "../.."
 languageCode = "en-us"
-baseurl = "https://docuapi.netlify.com/"
+baseurl = "http://crufter.com/docuapi/"
 title = "DocuAPI Example Site"
+
+relativeURLs=true
+canonifyURLs=true
 
 disableKinds = ["taxonomyTerm"]
 

@@ -3,40 +3,30 @@
 weight: 11
 title: notes
 ---
-
 # notes
 
-
-## Notes.Create
-
+## Notes.CreateNote
 ```go
 package main
-
 import (
   "github.com/micro/clients/go/client"
   notes_proto "github.com/micro/services/notes/proto"
 )
-
 func main() {
   c := client.NewClient(nil)
-
   req := notes_proto.CreateNoteRequest{}
   rsp := notes_proto.CreateNoteResponse{}
-
-  if err := c.Call("go.micro.srv.notes", "Notes.Create", req, &rsp); err != nil {
+  if err := c.Call("go.micro.srv.notes", "Notes.CreateNote", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
   fmt.Println(rsp)
 }
 ```
-
 ```javascript
 // To install "npm install --save @microhq/ng-client"
-
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "@microhq/ng-client";
-
 @Component({
   selector: "app-example",
   templateUrl: "./example.component.html",
@@ -44,10 +34,9 @@ import { ClientService } from "@microhq/ng-client";
 })
 export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
-
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.notes", "Notes.Create", {})
+      .call("go.micro.srv.notes", "Notes.CreateNote", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -55,58 +44,53 @@ export class ExampleComponent implements OnInit {
 }
 ```
 
-
-
-
 ### Request Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 note | Note | 
-
 
 ### Response Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 note | Note | 
 
 
+### Message Note
+Name |  Type | Description
+--------- | --------- | ---------
+id | string | 
+created | int64 | 
+title | string | 
+text | string | 
 
+
+### 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Notes.Delete
-
+## Notes.DeleteNote
 ```go
 package main
-
 import (
   "github.com/micro/clients/go/client"
   notes_proto "github.com/micro/services/notes/proto"
 )
-
 func main() {
   c := client.NewClient(nil)
-
   req := notes_proto.DeleteNoteRequest{}
   rsp := notes_proto.DeleteNoteResponse{}
-
-  if err := c.Call("go.micro.srv.notes", "Notes.Delete", req, &rsp); err != nil {
+  if err := c.Call("go.micro.srv.notes", "Notes.DeleteNote", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
   fmt.Println(rsp)
 }
 ```
-
 ```javascript
 // To install "npm install --save @microhq/ng-client"
-
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "@microhq/ng-client";
-
 @Component({
   selector: "app-example",
   templateUrl: "./example.component.html",
@@ -114,10 +98,9 @@ import { ClientService } from "@microhq/ng-client";
 })
 export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
-
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.notes", "Notes.Delete", {})
+      .call("go.micro.srv.notes", "Notes.DeleteNote", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -125,57 +108,52 @@ export class ExampleComponent implements OnInit {
 }
 ```
 
-
-
-
 ### Request Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 note | Note | 
 
-
 ### Response Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 
 
+### Message Note
+Name |  Type | Description
+--------- | --------- | ---------
+id | string | 
+created | int64 | 
+title | string | 
+text | string | 
 
+
+### 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Notes.List
-
+## Notes.ListNotes
 ```go
 package main
-
 import (
   "github.com/micro/clients/go/client"
   notes_proto "github.com/micro/services/notes/proto"
 )
-
 func main() {
   c := client.NewClient(nil)
-
   req := notes_proto.ListNotesRequest{}
   rsp := notes_proto.ListNotesResponse{}
-
-  if err := c.Call("go.micro.srv.notes", "Notes.List", req, &rsp); err != nil {
+  if err := c.Call("go.micro.srv.notes", "Notes.ListNotes", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
   fmt.Println(rsp)
 }
 ```
-
 ```javascript
 // To install "npm install --save @microhq/ng-client"
-
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "@microhq/ng-client";
-
 @Component({
   selector: "app-example",
   templateUrl: "./example.component.html",
@@ -183,10 +161,9 @@ import { ClientService } from "@microhq/ng-client";
 })
 export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
-
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.notes", "Notes.List", {})
+      .call("go.micro.srv.notes", "Notes.ListNotes", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -194,57 +171,52 @@ export class ExampleComponent implements OnInit {
 }
 ```
 
-
-
-
 ### Request Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 
-
 ### Response Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 notes | Note | 
 
 
+### Message Note
+Name |  Type | Description
+--------- | --------- | ---------
+id | string | 
+created | int64 | 
+title | string | 
+text | string | 
 
+
+### 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Notes.Update
-
+## Notes.UpdateNote
 ```go
 package main
-
 import (
   "github.com/micro/clients/go/client"
   notes_proto "github.com/micro/services/notes/proto"
 )
-
 func main() {
   c := client.NewClient(nil)
-
   req := notes_proto.UpdateNoteRequest{}
   rsp := notes_proto.UpdateNoteResponse{}
-
-  if err := c.Call("go.micro.srv.notes", "Notes.Update", req, &rsp); err != nil {
+  if err := c.Call("go.micro.srv.notes", "Notes.UpdateNote", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
   fmt.Println(rsp)
 }
 ```
-
 ```javascript
 // To install "npm install --save @microhq/ng-client"
-
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "@microhq/ng-client";
-
 @Component({
   selector: "app-example",
   templateUrl: "./example.component.html",
@@ -252,10 +224,9 @@ import { ClientService } from "@microhq/ng-client";
 })
 export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
-
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.notes", "Notes.Update", {})
+      .call("go.micro.srv.notes", "Notes.UpdateNote", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -263,92 +234,26 @@ export class ExampleComponent implements OnInit {
 }
 ```
 
-
-
-
 ### Request Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 note | Note | 
 
-
 ### Response Parameters
-
 Name |  Type | Description
 --------- | --------- | ---------
 
 
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Notes.UpdateStream
-
-```go
-package main
-
-import (
-  "github.com/micro/clients/go/client"
-  notes_proto "github.com/micro/services/notes/proto"
-)
-
-func main() {
-  c := client.NewClient(nil)
-
-  req := notes_proto.UpdateNoteRequest{}
-  rsp := notes_proto.UpdateNoteResponse{}
-
-  if err := c.Call("go.micro.srv.notes", "Notes.UpdateStream", req, &rsp); err != nil {
-    fmt.Println(err)
-    return
-  }
-  fmt.Println(rsp)
-}
-```
-
-```javascript
-// To install "npm install --save @microhq/ng-client"
-
-import { Component, OnInit } from "@angular/core";
-import { ClientService } from "@microhq/ng-client";
-
-@Component({
-  selector: "app-example",
-  templateUrl: "./example.component.html",
-  styleUrls: ["./example.component.css"]
-})
-export class ExampleComponent implements OnInit {
-  constructor(private mc: ClientService) {}
-
-  ngOnInit() {
-    this.mc
-      .call("go.micro.srv.notes", "Notes.UpdateStream", {})
-      .then((response: any) => {
-        console.log(response)
-      });
-  }
-}
-```
-
-
-
-
-### Request Parameters
-
+### Message Note
 Name |  Type | Description
 --------- | --------- | ---------
-note | Note | 
+id | string | 
+created | int64 | 
+title | string | 
+text | string | 
 
 
-### Response Parameters
-
-Name |  Type | Description
---------- | --------- | ---------
-
-
-
+### 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>

@@ -4,7 +4,6 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -357,18 +356,22 @@ td,
 th {
   padding: 0; }
 
+.logo {
+  width: 70%;
+  margin: 2em auto 2em auto !important; }
+
 .content > div.highlight {
   clear: none; }
 
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6, html, body {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+html, body, .content h3, .content h4, .content h5, .content h6, .content h2, .content h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   font-weight: 400; }
 
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+.content h3, .content h4, .content h5, .content h6, .content h2, .content h1 {
   font-weight: 700; }
 
-.content code, .content pre {
+.content pre, .content code {
   font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
   font-size: 12px;
   line-height: 1.5; }
@@ -384,7 +387,7 @@ th {
   font-weight: normal;
   font-style: normal; }
 
-.content aside.warning:before, .content aside.notice:before, .content aside.success:before, .toc-wrapper > .search:before {
+.toc-wrapper > .search:before, .content aside.success:before, .content aside.notice:before, .content aside.warning:before {
   font-family: 'slateeee';
   speak: none;
   font-style: normal;
@@ -426,7 +429,7 @@ html, body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F3F7F9;
+  background-color: white;
   height: 100%;
   -webkit-text-size-adjust: none;
   /* Never autoresize text */ }
@@ -447,7 +450,7 @@ html, body {
   left: 0;
   bottom: 0;
   width: 230px;
-  background-color: #254E70;
+  background-color: white;
   font-size: 13px;
   font-weight: bold; }
   .toc-wrapper .lang-selector {
@@ -462,7 +465,7 @@ html, body {
   .toc-wrapper > .search {
     position: relative; }
     .toc-wrapper > .search input {
-      background: #254E70;
+      background: white;
       border-width: 0 0 1px 0;
       border-color: #666;
       padding: 6px 0 6px 20px;
@@ -470,14 +473,14 @@ html, body {
       margin: 10px 15px;
       width: 200px;
       outline: none;
-      color: #fff;
+      color: #444;
       border-radius: 0;
       /* ios has a default border radius */ }
     .toc-wrapper > .search:before {
       position: absolute;
       top: 17px;
       left: 15px;
-      color: #fff; }
+      color: #444; }
   .toc-wrapper .search-results {
     margin-top: 0;
     box-sizing: border-box;
@@ -487,7 +490,7 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: #1E2224; }
+    background: white; }
     .toc-wrapper .search-results.visible {
       height: 30%;
       margin-bottom: 1em; }
@@ -495,7 +498,7 @@ html, body {
       margin: 1em 15px;
       line-height: 1; }
     .toc-wrapper .search-results a {
-      color: #fff;
+      color: #444;
       text-decoration: none; }
       .toc-wrapper .search-results a:hover {
         text-decoration: underline; }
@@ -505,19 +508,19 @@ html, body {
     padding: 0;
     line-height: 28px; }
   .toc-wrapper li {
-    color: #fff;
+    color: #444;
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms; }
   .toc-wrapper .toc-link.active {
     background-color: #0F75D4;
-    color: #fff; }
+    color: #444; }
   .toc-wrapper .toc-link.active-parent {
-    background-color: #1E2224;
-    color: #fff; }
+    background-color: white;
+    color: #444; }
   .toc-wrapper .toc-list-h2 {
     display: none;
-    background-color: #1E2224;
+    background-color: white;
     font-weight: 500; }
   .toc-wrapper .toc-h2 {
     padding-left: 25px;
@@ -527,7 +530,7 @@ html, body {
     margin-top: 1em;
     border-top: 1px dashed #666; }
     .toc-wrapper .toc-footer li, .toc-wrapper .toc-footer a {
-      color: #fff;
+      color: #444;
       text-decoration: none; }
     .toc-wrapper .toc-footer a:hover {
       text-decoration: underline; }
@@ -543,7 +546,7 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #fff;
+  color: #444;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms; }
@@ -564,7 +567,7 @@ html, body {
   #nav-button span {
     display: block;
     padding: 6px 6px 6px;
-    background-color: rgba(243, 247, 249, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     transform-origin: 0 0;
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px; }
@@ -580,12 +583,12 @@ html, body {
   margin-left: 230px;
   position: relative;
   z-index: 10;
-  background-color: #F3F7F9;
+  background-color: white;
   min-height: 100%;
   padding-bottom: 1px; }
   .page-wrapper .dark-box {
     width: 50%;
-    background-color: #002642;
+    background-color: white;
     position: absolute;
     right: 0;
     top: 0;
@@ -593,26 +596,26 @@ html, body {
   .page-wrapper .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid #002642; }
+    border-bottom: 5px solid white; }
 
 .lang-selector {
-  background-color: #1E2224;
+  background-color: white;
   width: 100%;
   font-weight: bold; }
   .lang-selector a {
     display: block;
     float: left;
-    color: #fff;
+    color: #444;
     text-decoration: none;
     padding: 0 10px;
     line-height: 30px;
     outline: 0; }
     .lang-selector a:active, .lang-selector a:focus {
       background-color: #111;
-      color: #fff; }
+      color: #444; }
     .lang-selector a.active {
-      background-color: #002642;
-      color: #fff; }
+      background-color: white;
+      color: #444; }
   .lang-selector:after {
     content: '';
     clear: both;
@@ -666,8 +669,8 @@ html, body {
     font-size: 10px; }
   .content hr {
     margin: 2em 0;
-    border-top: 2px solid #002642;
-    border-bottom: 2px solid #F3F7F9; }
+    border-top: 2px solid white;
+    border-bottom: 2px solid white; }
   .content table {
     margin-bottom: 1em;
     overflow: auto; }
@@ -688,7 +691,7 @@ html, body {
     .content table tr:nth-child(odd) > td {
       background-color: white; }
     .content table tr:nth-child(even) > td {
-      background-color: #fbfcfd; }
+      background-color: white; }
   .content dt {
     font-weight: bold; }
   .content dd {
@@ -728,7 +731,7 @@ html, body {
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%); }
 
 .content pre, .content blockquote {
-  background-color: #1E2224;
+  background-color: white;
   color: #fff;
   margin: 0;
   width: 50%;
@@ -784,6 +787,6 @@ html, body {
   color: #909090; }
 
 .highlight, .highlight .w {
-  background-color: #1E2224; }
+  background-color: white; }
 
 /*# sourceMappingURL=screen.css.map */

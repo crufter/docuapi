@@ -1,22 +1,22 @@
 
 ---
 weight: 11
-title: graphql
+title: apps
 ---
-# graphql
+# apps
 
-## Graphql.Call
+## Apps.Import
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  graphql_proto "github.com/micro/services/graphql/proto"
+  apps_proto "github.com/micro/services/apps/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := graphql_proto.go.api.Request{}
-  rsp := graphql_proto.go.api.Response{}
-  if err := c.Call("go.micro.srv.graphql", "Graphql.Call", req, &rsp); err != nil {
+  req := apps_proto.ImportRequest{}
+  rsp := apps_proto.ImportResponse{}
+  if err := c.Call("go.micro.srv.apps", "Apps.Import", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -36,7 +36,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.graphql", "Graphql.Call", {})
+      .call("go.micro.srv.apps", "Apps.Import", {})
       .then((response: any) => {
         console.log(response)
       });

@@ -1,22 +1,22 @@
 
 ---
 weight: 11
-title: subscribe
+title: explore
 ---
-# subscribe
+# explore
 
-## Subscribe.ListSubscriptions
+## Explore.Call
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  subscribe_proto "github.com/micro/services/subscribe/proto"
+  explore_proto "github.com/micro/services/explore/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := subscribe_proto.ListSubscriptionsRequest{}
-  rsp := subscribe_proto.ListSubscriptionsResponse{}
-  if err := c.Call("go.micro.srv.subscribe", "Subscribe.ListSubscriptions", req, &rsp); err != nil {
+  req := explore_proto.Request{}
+  rsp := explore_proto.Response{}
+  if err := c.Call("go.micro.srv.explore", "Explore.Call", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -36,7 +36,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.subscribe", "Subscribe.ListSubscriptions", {})
+      .call("go.micro.srv.explore", "Explore.Call", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -47,18 +47,12 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-namespace | string | 
+name | string | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-subscriptions | Subscription | 
-
-
-### Message Subscription
-Name |  Type | Description
---------- | --------- | ---------
-email | string | 
+msg | string | 
 
 
 ### 
@@ -66,18 +60,18 @@ email | string |
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Subscribe.Subscribe
+## Explore.PingPong
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  subscribe_proto "github.com/micro/services/subscribe/proto"
+  explore_proto "github.com/micro/services/explore/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := subscribe_proto.SubscribeRequest{}
-  rsp := subscribe_proto.SubscribeResponse{}
-  if err := c.Call("go.micro.srv.subscribe", "Subscribe.Subscribe", req, &rsp); err != nil {
+  req := explore_proto.Ping{}
+  rsp := explore_proto.Pong{}
+  if err := c.Call("go.micro.srv.explore", "Explore.PingPong", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -97,7 +91,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.subscribe", "Subscribe.Subscribe", {})
+      .call("go.micro.srv.explore", "Explore.PingPong", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -108,12 +102,67 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-namespace | string |  namespaces are owned by the account that first creates a subscription in them
-email | string | 
+stroke | int64 | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
+stroke | int64 | 
+
+
+### 
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+
+## Explore.Stream
+```go
+package main
+import (
+  "github.com/micro/clients/go/client"
+  explore_proto "github.com/micro/services/explore/proto"
+)
+func main() {
+  c := client.NewClient(nil)
+  req := explore_proto.StreamingRequest{}
+  rsp := explore_proto.StreamingResponse{}
+  if err := c.Call("go.micro.srv.explore", "Explore.Stream", req, &rsp); err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(rsp)
+}
+```
+```javascript
+// To install "npm install --save @microhq/ng-client"
+import { Component, OnInit } from "@angular/core";
+import { ClientService } from "@microhq/ng-client";
+@Component({
+  selector: "app-example",
+  templateUrl: "./example.component.html",
+  styleUrls: ["./example.component.css"]
+})
+export class ExampleComponent implements OnInit {
+  constructor(private mc: ClientService) {}
+  ngOnInit() {
+    this.mc
+      .call("go.micro.srv.explore", "Explore.Stream", {})
+      .then((response: any) => {
+        console.log(response)
+      });
+  }
+}
+```
+
+### Request Parameters
+Name |  Type | Description
+--------- | --------- | ---------
+count | int64 | 
+
+### Response Parameters
+Name |  Type | Description
+--------- | --------- | ---------
+count | int64 | 
 
 
 ### 

@@ -1,22 +1,22 @@
 
 ---
 weight: 11
-title: ben
+title: serverless
 ---
-# ben
+# serverless
 
-## Ben.Call
+## Apps.Create
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  ben_proto "github.com/micro/services/ben/proto"
+  serverless_proto "github.com/micro/services/serverless/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := ben_proto.Request{}
-  rsp := ben_proto.Response{}
-  if err := c.Call("go.micro.srv.ben", "Ben.Call", req, &rsp); err != nil {
+  req := serverless_proto.CreateRequest{}
+  rsp := serverless_proto.CreateResponse{}
+  if err := c.Call("go.micro.srv.serverless", "Apps.Create", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -36,7 +36,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.ben", "Ben.Call", {})
+      .call("go.micro.srv.serverless", "Apps.Create", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -47,12 +47,22 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-name | string | 
+app | App | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-msg | string | 
+
+
+### Message App
+Name |  Type | Description
+--------- | --------- | ---------
+name | string |  eg. "my-app-1"
+version | string |  Optional commit hash to deploy a certain version
+source | string |  URL of the GitHub repo
+language | string |  One of the predefined image tags from here https://github.com/micro/cells
+ See top level folders
+folder | string |  Optional folder to cd into while building the app.
 
 
 ### 
@@ -60,18 +70,18 @@ msg | string |
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Ben.PingPong
+## Apps.Delete
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  ben_proto "github.com/micro/services/ben/proto"
+  serverless_proto "github.com/micro/services/serverless/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := ben_proto.Ping{}
-  rsp := ben_proto.Pong{}
-  if err := c.Call("go.micro.srv.ben", "Ben.PingPong", req, &rsp); err != nil {
+  req := serverless_proto.DeleteRequest{}
+  rsp := serverless_proto.DeleteResponse{}
+  if err := c.Call("go.micro.srv.serverless", "Apps.Delete", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -91,7 +101,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.ben", "Ben.PingPong", {})
+      .call("go.micro.srv.serverless", "Apps.Delete", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -102,12 +112,22 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-stroke | int64 | 
+app | App | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-stroke | int64 | 
+
+
+### Message App
+Name |  Type | Description
+--------- | --------- | ---------
+name | string |  eg. "my-app-1"
+version | string |  Optional commit hash to deploy a certain version
+source | string |  URL of the GitHub repo
+language | string |  One of the predefined image tags from here https://github.com/micro/cells
+ See top level folders
+folder | string |  Optional folder to cd into while building the app.
 
 
 ### 
@@ -115,18 +135,18 @@ stroke | int64 |
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Ben.Stream
+## Apps.List
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  ben_proto "github.com/micro/services/ben/proto"
+  serverless_proto "github.com/micro/services/serverless/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := ben_proto.StreamingRequest{}
-  rsp := ben_proto.StreamingResponse{}
-  if err := c.Call("go.micro.srv.ben", "Ben.Stream", req, &rsp); err != nil {
+  req := serverless_proto.ListRequest{}
+  rsp := serverless_proto.ListResponse{}
+  if err := c.Call("go.micro.srv.serverless", "Apps.List", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -146,7 +166,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.ben", "Ben.Stream", {})
+      .call("go.micro.srv.serverless", "Apps.List", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -157,12 +177,22 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-count | int64 | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-count | int64 | 
+apps | App | 
+
+
+### Message App
+Name |  Type | Description
+--------- | --------- | ---------
+name | string |  eg. "my-app-1"
+version | string |  Optional commit hash to deploy a certain version
+source | string |  URL of the GitHub repo
+language | string |  One of the predefined image tags from here https://github.com/micro/cells
+ See top level folders
+folder | string |  Optional folder to cd into while building the app.
 
 
 ### 

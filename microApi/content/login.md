@@ -1,22 +1,22 @@
 
 ---
 weight: 11
-title: ben
+title: login
 ---
-# ben
+# login
 
-## Ben.Call
+## Login.CreateLogin
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  ben_proto "github.com/micro/services/ben/proto"
+  login_proto "github.com/micro/services/login/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := ben_proto.Request{}
-  rsp := ben_proto.Response{}
-  if err := c.Call("go.micro.srv.ben", "Ben.Call", req, &rsp); err != nil {
+  req := login_proto.CreateLoginRequest{}
+  rsp := login_proto.CreateLoginResponse{}
+  if err := c.Call("go.micro.srv.login", "Login.CreateLogin", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -36,7 +36,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.ben", "Ben.Call", {})
+      .call("go.micro.srv.login", "Login.CreateLogin", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -47,12 +47,14 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-name | string | 
+id | string | 
+email | string | 
+password | string | 
+validate_only | bool | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-msg | string | 
 
 
 ### 
@@ -60,18 +62,18 @@ msg | string |
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Ben.PingPong
+## Login.UpdateEmail
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  ben_proto "github.com/micro/services/ben/proto"
+  login_proto "github.com/micro/services/login/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := ben_proto.Ping{}
-  rsp := ben_proto.Pong{}
-  if err := c.Call("go.micro.srv.ben", "Ben.PingPong", req, &rsp); err != nil {
+  req := login_proto.UpdateEmailRequest{}
+  rsp := login_proto.UpdateEmailResponse{}
+  if err := c.Call("go.micro.srv.login", "Login.UpdateEmail", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -91,23 +93,24 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.ben", "Ben.PingPong", {})
+      .call("go.micro.srv.login", "Login.UpdateEmail", {})
       .then((response: any) => {
         console.log(response)
       });
   }
 }
 ```
-
+ TODO: Remove the RPC and replace with consuming users update events
+ once we have update diff implemented.
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-stroke | int64 | 
+old_email | string | 
+new_email | string | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-stroke | int64 | 
 
 
 ### 
@@ -115,18 +118,18 @@ stroke | int64 |
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Ben.Stream
+## Login.VerifyLogin
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  ben_proto "github.com/micro/services/ben/proto"
+  login_proto "github.com/micro/services/login/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := ben_proto.StreamingRequest{}
-  rsp := ben_proto.StreamingResponse{}
-  if err := c.Call("go.micro.srv.ben", "Ben.Stream", req, &rsp); err != nil {
+  req := login_proto.VerifyLoginRequest{}
+  rsp := login_proto.VerifyLoginResponse{}
+  if err := c.Call("go.micro.srv.login", "Login.VerifyLogin", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -146,7 +149,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.ben", "Ben.Stream", {})
+      .call("go.micro.srv.login", "Login.VerifyLogin", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -157,12 +160,13 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-count | int64 | 
+email | string | 
+password | string | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-count | int64 | 
+id | string | 
 
 
 ### 

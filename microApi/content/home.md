@@ -1,22 +1,22 @@
 
 ---
 weight: 11
-title: subscribe
+title: home
 ---
-# subscribe
+# home
 
-## Subscribe.ListSubscriptions
+## Home.ListApps
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  subscribe_proto "github.com/micro/services/subscribe/proto"
+  home_proto "github.com/micro/services/home/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := subscribe_proto.ListSubscriptionsRequest{}
-  rsp := subscribe_proto.ListSubscriptionsResponse{}
-  if err := c.Call("go.micro.srv.subscribe", "Subscribe.ListSubscriptions", req, &rsp); err != nil {
+  req := home_proto.ListAppsRequest{}
+  rsp := home_proto.ListAppsResponse{}
+  if err := c.Call("go.micro.srv.home", "Home.ListApps", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -36,7 +36,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.subscribe", "Subscribe.ListSubscriptions", {})
+      .call("go.micro.srv.home", "Home.ListApps", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -47,18 +47,20 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-namespace | string | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-subscriptions | Subscription | 
+apps | App | 
 
 
-### Message Subscription
+### Message App
 Name |  Type | Description
 --------- | --------- | ---------
-email | string | 
+id | string | 
+name | string | 
+category | string | 
+icon | string | 
 
 
 ### 
@@ -66,18 +68,18 @@ email | string |
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Subscribe.Subscribe
+## Home.ReadUser
 ```go
 package main
 import (
   "github.com/micro/clients/go/client"
-  subscribe_proto "github.com/micro/services/subscribe/proto"
+  home_proto "github.com/micro/services/home/proto"
 )
 func main() {
   c := client.NewClient(nil)
-  req := subscribe_proto.SubscribeRequest{}
-  rsp := subscribe_proto.SubscribeResponse{}
-  if err := c.Call("go.micro.srv.subscribe", "Subscribe.Subscribe", req, &rsp); err != nil {
+  req := home_proto.ReadUserRequest{}
+  rsp := home_proto.ReadUserResponse{}
+  if err := c.Call("go.micro.srv.home", "Home.ReadUser", req, &rsp); err != nil {
     fmt.Println(err)
     return
   }
@@ -97,7 +99,7 @@ export class ExampleComponent implements OnInit {
   constructor(private mc: ClientService) {}
   ngOnInit() {
     this.mc
-      .call("go.micro.srv.subscribe", "Subscribe.Subscribe", {})
+      .call("go.micro.srv.home", "Home.ReadUser", {})
       .then((response: any) => {
         console.log(response)
       });
@@ -108,12 +110,19 @@ export class ExampleComponent implements OnInit {
 ### Request Parameters
 Name |  Type | Description
 --------- | --------- | ---------
-namespace | string |  namespaces are owned by the account that first creates a subscription in them
-email | string | 
 
 ### Response Parameters
 Name |  Type | Description
 --------- | --------- | ---------
+user | User | 
+
+
+### Message User
+Name |  Type | Description
+--------- | --------- | ---------
+first_name | string | 
+last_name | string | 
+profile_picture_url | string | 
 
 
 ### 

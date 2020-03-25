@@ -1,8 +1,8 @@
 theme = "docuapi"
 themesdir = "../.."
 languageCode = "en-us"
-baseurl = "http://crufter.com/docuapi/"
-title = "DocuAPI Example Site"
+baseurl = "https://explore.micro.mu"
+title = "Micro Explore"
 
 relativeURLs=true
 canonifyURLs=true

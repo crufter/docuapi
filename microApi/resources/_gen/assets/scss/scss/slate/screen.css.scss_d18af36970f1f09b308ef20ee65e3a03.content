@@ -356,6 +356,10 @@ td,
 th {
   padding: 0; }
 
+.logo {
+  width: 70%;
+  margin: 2em auto 2em auto !important; }
+
 .content > div.highlight {
   clear: none; }
 
